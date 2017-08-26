@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825234356) do
+ActiveRecord::Schema.define(version: 20170826012947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "map_pins", force: :cascade do |t|
+    t.integer "map_id"
+    t.integer "pin_id"
+  end
+
+  create_table "maps", force: :cascade do |t|
+    t.text     "name"
+    t.text     "location"
+    t.float    "center_lat"
+    t.float    "center_lng"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pins", force: :cascade do |t|
+    t.text     "location"
+    t.float    "pin_lat"
+    t.float    "pin_lng"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_maps", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "map_id"
+  end
+
+  create_table "user_pins", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "pin_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "firstname"

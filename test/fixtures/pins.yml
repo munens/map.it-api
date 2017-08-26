@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: MyText
+  pin_lat: 1.5
+  pin_lng: 1.5
+
+two:
+  location: MyText
+  pin_lat: 1.5
+  pin_lng: 1.5
