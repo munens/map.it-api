@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170826012947) do
+ActiveRecord::Schema.define(version: 20170826025036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "blogs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "pin_id"
+    t.text     "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["pin_id"], name: "index_blogs_on_pin_id", using: :btree
+    t.index ["user_id"], name: "index_blogs_on_user_id", using: :btree
+  end
 
   create_table "map_pins", force: :cascade do |t|
     t.integer "map_id"
@@ -59,4 +70,6 @@ ActiveRecord::Schema.define(version: 20170826012947) do
     t.string   "password_digest"
   end
 
+  add_foreign_key "blogs", "pins"
+  add_foreign_key "blogs", "users"
 end

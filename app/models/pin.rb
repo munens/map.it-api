@@ -4,4 +4,6 @@ class Pin < ApplicationRecord
 
 	has_many :user_pins
 	has_many :users, through: :user_pins, dependent: :destroy
+
+	has_many :blogs
 end
